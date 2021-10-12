@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>네이버뉴스</h1>
+    </hr>
+
+    <div id="news-box">
+        
+    </div>
+    <script>
+        
+            const eventSource = new EventSource("http://localhost:8080/naverNews");
+            eventSource.onmessage = (event) => {
+                naverNews = JSON.parse(event.data);
+                $("#news-box").append("<h3>"+naverNews.title+"</h3>");
+                $("#news-box").append("<h3>"+naverNews.company+"</h3>");
+                $("#news-box").append("<h3>"+naverNews.createdAt+"</h3>");
+            }     
+        
+
+    </script>
+
+</body>
+</html>
